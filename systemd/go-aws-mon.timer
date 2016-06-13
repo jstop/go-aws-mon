@@ -8,3 +8,6 @@ Unit=go-aws-mon.service
 
 [Install]
 WantedBy=multi-user.target
+
+[X-Fleet]
+Global=true
