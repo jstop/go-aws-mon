@@ -1,0 +1,12 @@
+[Unit]
+Description=inodes-mon-setup
+[Service]
+ExecStart=/bin/true
+ExecStartPost=/bin/sh -c "[[ -f /.inode_monitors_set ]] || wget https://gist.githubusercontent.com/jstop/e8c2cef128bf5d31cf8b21e843f25460/raw/0031d4d3f216998f57008cd1dda69658b56dfad3/inode_monitoring.sh -P /opt/bin/ && chmod +x /opt/bin/inode_monitoring.sh"
+ExecStartPost=/bin/sh -c "[[ -f /.inode_monitors_set ]] || /opt/bin/inode_monitoring.sh"
+
+[Install]
+WantedBy=multi-user.target
+
+[X-Fleet]
+Global=true
